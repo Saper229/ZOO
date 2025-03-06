@@ -1,3 +1,6 @@
+import java.util.Objects;
+import java.util.Random;
+
 public class Pracownik extends Goscie {
     String imie;
     String nazwisko;
@@ -10,15 +13,10 @@ public class Pracownik extends Goscie {
     }
 
     public static String generatePassword(String imie, String nazwisko) {
-        String changedName = imie.length() >= 2 ? imie.substring(0, 2) : imie;
-        String changedSurname = nazwisko.length() >= 3 ? nazwisko.substring(0, 3) : nazwisko;
-        int pass = (int) ((Math.random()*1000)+1);
-
-        return changedName + changedSurname + pass;
-    }
-
-    public static boolean isPasswordValid(String imie, String nazwisko, String password) {
-        password = generatePassword(imie,nazwisko);
-        return password.equals(password);
+        String changedName = imie.substring(0, Math.min(imie.length(), 2));
+        String changedSurname = nazwisko.substring(0, Math.min(nazwisko.length(), 3));
+        Random random = new Random();
+        int randomNum = (int) ((Math.random()*1000)+1);
+        return changedName + changedSurname + randomNum;
     }
 }

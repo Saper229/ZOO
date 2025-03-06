@@ -87,13 +87,13 @@ public class Main {
             String name = scanner.nextLine();
             System.out.println("Podaj nazwisko pracownika:");
             String surname = scanner.nextLine();
-            String password = Pracownik.generatePassword(name, surname);
+            String password = Pracownik.generatePassword(name,surname);
             System.out.println("==================================");
             System.out.println("Hasło dostępu pracownika: " + password);
             System.out.println("==================================");
             System.out.println("Podaj Hasło Pracownika");
-            String Password = scanner.nextLine();
-            if (Pracownik.isPasswordValid(name,surname,password)) {
+            String sendPassword = scanner.nextLine();
+            if (sendPassword.equals(password)) {
                 System.out.println("Hasło poprawne, masz dostęp do sekcji zwierząt!");
                 System.out.println("Wybierz sekcję, którą chcesz zobaczyć i edytować:");
                 System.out.println("1 - Ssaki");
