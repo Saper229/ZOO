@@ -74,4 +74,32 @@ public class Zoo {
             System.out.println(zwierze.getName());
         }
     }
+
+    @Override
+    public String toString() {
+        return "Zoo{" +
+                "dataUrodzenia=" + dataUrodzenia +
+                ", pingwin=" + pingwin +
+                ", orzeł=" + orzeł +
+                ", strus=" + strus +
+                ", pelikan=" + pelikan +
+                ", flaming=" + flaming +
+                ", papuga=" + papuga +
+                ", jaguar=" + jaguar +
+                ", lew=" + lew +
+                ", zebra=" + zebra +
+                ", wilk=" + wilk +
+                ", słoń=" + słoń +
+                ", tygrys=" + tygrys +
+                ", jaszczurka=" + jaszczurka +
+                ", wąż=" + wąż +
+                ", gekon=" + gekon +
+                ", kameleon=" + kameleon +
+                ", krokodyl=" + krokodyl +
+                ", agama=" + agama +
+                ", ptaki=" + ptaki +
+                ", ssaki=" + ssaki +
+                ", gady=" + gady +
+                '}';
+    }
 }
