@@ -2,7 +2,6 @@ import java.util.Scanner;
 import java.time.LocalDate;
 
 public class Zwierze {
-    private static Zwierze Zwierze;
     private String name;
     private LocalDate dataUrodzenia;
     private String stanZdrowia;
@@ -32,7 +31,7 @@ public class Zwierze {
         System.out.println("1 - Edytować zwierzę");
         System.out.println("2 - Usunąć zwierzę");
         System.out.println("3 - Dodać zwierzę");
-        System.out.println("5- Zakończ");
+        System.out.println("4- Zakończ");
         int action = scanner.nextInt();
         scanner.nextLine();
 
@@ -88,7 +87,6 @@ public class Zwierze {
             System.out.println("3 - TERRARIUM");
             System.out.println("4 - AKWARIUM");
             System.out.println("5 - WYBIEG");
-            zoo.addAnimal(section,Zwierze);
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -103,7 +101,9 @@ public class Zwierze {
                     yield TypObiektu.WYBIEG;
                 }
             };
-        } else if (action == 5) {
+            Zwierze newAnimal = new Zwierze(name, LocalDate.now(), stanZdrowia, newType);
+            zoo.addAnimal(section, newAnimal);
+        } else if (action == 4) {
             System.out.println("Koniec Edytowania");
         } else {
             System.out.println("Nieznana opcja.");

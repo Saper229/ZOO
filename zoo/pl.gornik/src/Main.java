@@ -101,7 +101,7 @@ public class Main {
             if (sendPassword.equals(password)) {
                 System.out.println("Hasło poprawne, masz dostęp do sekcji Panelu");
                 while (true) {
-                    System.out.println("Czy chcesz Zarządzać ZOO?");
+                    System.out.println("Czy chcesz Zarządzać ZOO? (Wpisz 'tak' jeśli chcesz, jeśli nie chcesz napisz 'nie')");
                     String askForContinue = scanner.nextLine();
                     if (askForContinue.equalsIgnoreCase("nie")) {
                         break;
