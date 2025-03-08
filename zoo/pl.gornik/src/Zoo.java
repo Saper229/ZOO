@@ -74,11 +74,23 @@ public class Zoo {
 
     }
 
+    public int getTotalAnimals() {
+        return ptaki.size() + ssaki.size() + gady.size();
+    }
+
+    public int getTotalWorkers() {
+        return pracownicy.size();
+    }
+
+    public int getTotalGuests() {
+        return goscie.size();
+    }
+
     private List<Goscie> goscie;
     private List<Zwierze> animals;
     private List<Pracownik> pracownicy;
 
-    public void zarzadzajPracownikami() {
+    public void manageWorkers() {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -97,21 +109,21 @@ public class Zoo {
             switch (choice) {
                 case 1:
                     System.out.println("Podaj imię pracownika:");
-                    String imie = scanner.nextLine();
+                    String name = scanner.nextLine();
                     System.out.println("Podaj nazwisko pracownika:");
-                    String nazwisko = scanner.nextLine();
+                    String surname = scanner.nextLine();
                     System.out.println("Podaj stanowisko pracownika:");
                     int id = scanner.nextInt();
-                    Pracownik pracownik = new Pracownik(imie, nazwisko, id);
+                    Pracownik pracownik = new Pracownik(name,surname, id);
                     addPracownik(pracownik);
                     System.out.println("Pracownik dodany.");
                     break;
                 case 2:
                     System.out.println("Podaj imię pracownika do usunięcia:");
-                    String imieUsun = scanner.nextLine();
+                    String nameDelete = scanner.nextLine();
                     System.out.println("Podaj nazwisko pracownika do usunięcia:");
-                    String nazwiskoUsun = scanner.nextLine();
-                    removePracownik(imieUsun, nazwiskoUsun);
+                    String surnameDelete = scanner.nextLine();
+                    removePracownik(nameDelete, surnameDelete);
                     System.out.println("Pracownik usunięty.");
                     break;
                 case 3:
@@ -155,21 +167,21 @@ public class Zoo {
         }
     }
 
-    public void pokazPtaki() {
+    public void showBirds() {
         System.out.println("Sekcja: Ptaki");
         for (Zwierze zwierze : ptaki) {
             System.out.println(zwierze);
         }
     }
 
-    public void pokazSsaki() {
+    public void showMammals() {
         System.out.println("Sekcja: Ssaki");
         for (Zwierze zwierze : ssaki) {
             System.out.println(zwierze);
         }
     }
 
-    public void pokazGady() {
+    public void showReptiles() {
         System.out.println("Sekcja: Gady");
         for (Zwierze zwierze : gady) {
             System.out.println(zwierze);
@@ -220,7 +232,7 @@ public class Zoo {
         }
     }
 
-    public void zarzadzajGosciami() {
+    public void manageGuests() {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -269,16 +281,6 @@ public class Zoo {
                 default:
                     System.out.println("Nieznana opcja.");
                     break;
-            }
-        }
-    }
-
-    public void showAnimals() {
-        if (animals.isEmpty()) {
-            System.out.println("Brak gości w systemie.");
-        } else {
-            for (Zwierze zwierze : animals) {
-                System.out.println(animals);
             }
         }
     }

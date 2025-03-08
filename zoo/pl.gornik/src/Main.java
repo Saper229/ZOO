@@ -7,30 +7,34 @@ public class Main {
         Zoo zoo = new Zoo();
         System.out.println("Witaj w ZOO");
         System.out.println("Kim jesteś, Gościem czy pracownikiem?(Gość-1, Pracownik-2)");
-        String zapytaj = scanner.nextLine();
+        String ask = scanner.nextLine();
 
-        if (zapytaj.equalsIgnoreCase("1")) {
+        if (ask.equalsIgnoreCase("1")) {
             System.out.println("Wstęp kosztuje 20zł");
             int getPrice = 20;
             System.out.println("Proszę wybrać metodę płatności (blik, karta, gotówka):");
-            String zapytaj2 = scanner.nextLine();
-            if (zapytaj2.equalsIgnoreCase("blik")) {
+            System.out.println("BLIK - 1");
+            System.out.println("Karta - 2");
+            System.out.println("Gotówka - 3");
+            String secondAsk = scanner.nextLine();
+            if (secondAsk.equalsIgnoreCase("1")) {
                 System.out.println("------------------------------");
                 int blik = RodzajPlatnosci.BLIK.blikPayment();
                 System.out.println(blik);
                 System.out.println("------------------------------");
                 System.out.println("Podaj Kod Blik:");
-                int zapytaj3 = scanner.nextInt();
+                int thirdAsk = scanner.nextInt();
                 scanner.nextLine();
 
-                if (zapytaj3 == blik) {
+                if (thirdAsk == blik) {
                     System.out.println("Kod jest poprawny, transakcja przeszła");
-                    Platnosc platnosc = new Platnosc();
-                    platnosc.paragon(getPrice, zapytaj2);
+                    Platnosc validuty = new Platnosc();
+                    validuty.paragon(getPrice,"BLIK");
                 } else {
                     System.out.println("Transakcja nie powiodła się");
+                    return;
                 }
-            } else if (zapytaj2.equalsIgnoreCase("karta")) {
+            } else if (secondAsk.equalsIgnoreCase("2")) {
                 System.out.println("------------------------------");
                 int card = RodzajPlatnosci.KARTA.cardPayment();
                 System.out.println(card);
@@ -41,25 +45,25 @@ public class Main {
 
                 if (pin == card) {
                     System.out.println("PIN jest poprawny, transakcja się powiodła");
-                    Platnosc platnosc2 = new Platnosc();
-                    platnosc2.paragon(getPrice, zapytaj2);
+                    Platnosc validuty2 = new Platnosc();
+                    validuty2.paragon(getPrice, "Kartą");
                 } else {
                     System.out.println("Niepoprawny PIN, transakcja nie powiodła się");
+                    return;
                 }
-            } else if (zapytaj2.equalsIgnoreCase("gotówka")) {
+            } else if (secondAsk.equalsIgnoreCase("3")) {
                 System.out.println("Proszę zapłacić gotówką (podaj kwotę):");
                 double price = scanner.nextDouble();
                 scanner.nextLine();
                 System.out.println("Transakcja się powiodła");
-                Platnosc platnosc2 = new Platnosc();
-                platnosc2.getRodzajPlatnosci(RodzajPlatnosci.GOTOWKA);
-                platnosc2.paragon(getPrice, zapytaj2);
-                platnosc2.change(price);
+                Platnosc validity2 = new Platnosc();
+                validity2.getRodzajPlatnosci(RodzajPlatnosci.GOTOWKA);
+                validity2.paragon(getPrice, "Gotówka");
+                validity2.change(price);
             } else {
                 System.out.println("Nieznana metoda płatności");
+                return;
             }
-            System.out.println();
-            System.out.println("---------------------------------------------------------");
             while(true) {
                 System.out.println("Gdzie teraz chcesz się udać?");
                 System.out.println("1 - Ssaki");
@@ -72,13 +76,13 @@ public class Main {
                 scanner.nextLine();
                 switch (choice) {
                     case 1:
-                        zoo.pokazSsaki();
+                        zoo.showMammals();
                         break;
                     case 2:
-                        zoo.pokazPtaki();
+                        zoo.showBirds();
                         break;
                     case 3:
-                        zoo.pokazGady();
+                        zoo.showReptiles();
                         break;
                     case 4:
                         return;
@@ -87,7 +91,7 @@ public class Main {
                         break;
                 }
             }
-        } else if (zapytaj.equalsIgnoreCase("2")) {
+        } else if (ask.equalsIgnoreCase("2")) {
             System.out.println("Podaj imię pracownika:");
             String name = scanner.nextLine();
             System.out.println("Podaj nazwisko pracownika:");
@@ -110,7 +114,8 @@ public class Main {
                         System.out.println("1 - Zarządzanie zwierzętami");
                         System.out.println("2 - Zarządzanie gośćmi");
                         System.out.println("3 - Zarządzanie pracownikami");
-                        System.out.println("4 - Zakończ");
+                        System.out.println("4 - Raport");
+                        System.out.println("5 - Zakończ");
                         int guestsOrAnimals = scanner.nextInt();
                         if (guestsOrAnimals == 1) {
                             System.out.println("1 - Ssaki");
@@ -123,15 +128,15 @@ public class Main {
 
                             switch (choice) {
                                 case 1:
-                                    zoo.pokazSsaki();
+                                    zoo.showMammals();
                                     Zwierze.modifyAnimal(zoo, scanner, "ssak");
                                     break;
                                 case 2:
-                                    zoo.pokazPtaki();
+                                    zoo.showBirds();
                                     Zwierze.modifyAnimal(zoo, scanner, "ptak");
                                     break;
                                 case 3:
-                                    zoo.pokazGady();
+                                    zoo.showReptiles();
                                     Zwierze.modifyAnimal(zoo, scanner, "gady");
                                     break;
                                 default:
@@ -139,15 +144,24 @@ public class Main {
                                     break;
                             }
                         } else if (guestsOrAnimals == 2) {
-                            zoo.zarzadzajGosciami();
+                            zoo.manageGuests();
                         }
                         else if (guestsOrAnimals == 3) {
-                            zoo.zarzadzajPracownikami();
+                            zoo.manageWorkers();
                         }
                         else if (guestsOrAnimals == 4) {
-                            System.out.println("Zakończono program.");
-                            break;
-                        } else {
+                            int totalAnimals = zoo.getTotalAnimals();
+                            int totalWorkers = zoo.getTotalWorkers();
+                            int totalGuests = zoo.getTotalGuests();
+                            System.out.println("Raport:");
+                            System.out.println("Ilość Zwierząt"+totalAnimals);
+                            System.out.println("Ilość Pracowników"+totalWorkers);
+                            System.out.println("Ilość Gośći"+totalGuests);
+                        } else if (guestsOrAnimals ==5 ) {
+                            System.out.println("Zakończono działanie");
+                            return;
+                        }
+                        else {
                             System.out.println("Nieznana opcja.");
                         }
                     }
@@ -158,6 +172,7 @@ public class Main {
 
         } else {
             System.out.println("Nieznana opcja, powinieneś być gościem lub pracownikiem!");
+
         }
     }
 }

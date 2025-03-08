@@ -112,11 +112,9 @@ public class Zwierze {
 
     @Override
     public String toString() {
-        return "Zwierzę{" +
-                "nazwa='" + name + '\'' +
-                ", data urodzenia=" + dataUrodzenia +
-                ", stan zdrowia='" + stanZdrowia + '\'' +
-                ", typ obiektu=" + typObiektu +
-                '}';
+        return "Zwierze='" + name + '\'' +
+                ", Data Urodzenia=" + dataUrodzenia +
+                ", Stan Zdrowia='" + stanZdrowia + '\'' +
+                ", Rodzaj Przechowywania=" + typObiektu;
     }
 }
