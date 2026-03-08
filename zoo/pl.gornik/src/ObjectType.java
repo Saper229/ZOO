@@ -1,0 +1,1 @@
+public enum ObjectType { CAGE, AVIARY, TERRARIUM, AQUARIUM, PADDOCK }
